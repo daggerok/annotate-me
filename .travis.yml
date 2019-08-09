@@ -1,4 +1,3 @@
-dist: xenial
 notifications:
   email: false
 git:
@@ -10,9 +9,24 @@ env:
 language: java
 jdk: openjdk8
 install: true
-script:
-### JDK8 ###
-- ./mvnw clean test -U
+jobs:
+  include:
+  - stage: test
+    jdk: openjdk8
+    name: test jdk8
+    script: ./mvnw -U
+  - stage: test
+    jdk: openjdk8
+    name: check updates jdk8
+    script: ./mvnw versions:display-property-updates
+  - stage: test
+    jdk: openjdk11
+    name: test jdk11
+    script: ./mvnw -U
+  - stage: test
+    jdk: openjdk11
+    name: check updates jdk11
+    script: ./mvnw versions:display-property-updates
 cache:
   pip: true
   packages: true

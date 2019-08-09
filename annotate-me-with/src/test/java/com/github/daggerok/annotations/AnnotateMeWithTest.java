@@ -9,6 +9,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
 import static java.lang.String.format;
@@ -37,7 +38,7 @@ class AnnotateMeWithTest {
   void test_annotate_me_with_annotation() {
     MyTestService myTestService = new MyTestService();
     Method[] declaredMethods = Try.of(() -> myTestService.getClass().getDeclaredMethods())
-                                  .getOrElseThrow(RuntimeException::new);
+                                  .getOrElseThrow((Function<Throwable, RuntimeException>) RuntimeException::new);
     assertThat(declaredMethods).hasSize(1);
 
     Method firstMethod = Arrays.stream(declaredMethods).findFirst().orElseThrow(RuntimeException::new);

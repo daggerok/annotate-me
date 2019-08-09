@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
 
@@ -50,7 +51,7 @@ class CounterHandlerTest {
     assertThat(constructor.getParameterCount()).isEqualTo(0);
 
     Object instance = Try.of(() -> constructor.newInstance(new Object[0]))
-                         .getOrElseThrow(RuntimeException::new);
+                         .getOrElseThrow((Function<Throwable, RuntimeException>) RuntimeException::new);
     assertThat(instance).isNotNull();
 
     System.out.println("instance = " + instance);
