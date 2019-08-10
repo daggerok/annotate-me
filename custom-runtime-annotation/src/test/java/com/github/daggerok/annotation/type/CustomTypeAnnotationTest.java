@@ -13,20 +13,20 @@ import static org.assertj.core.api.Assertions.assertThat;
     boolean enabled() default true;
 }
 
-class Class1 {}
+class Aggregate1 {}
 
 @CustomTypeAnnotation(enabled = false)
-class Class2 {}
+class Aggregate2 {}
 
 @CustomTypeAnnotation
-class Class3 {}
+class Aggregate3 {}
 
 class CustomTypeAnnotationTest {
 
     @Test
     void Class1_should_not_be_processed_because_it_has_not_be_annotated() {
         // when:
-        CustomTypeAnnotation annotation = Class1.class.getDeclaredAnnotation(CustomTypeAnnotation.class);
+        CustomTypeAnnotation annotation = Aggregate1.class.getDeclaredAnnotation(CustomTypeAnnotation.class);
         // then:
         assertThat(annotation).isNull();
     }
@@ -34,7 +34,7 @@ class CustomTypeAnnotationTest {
     @Test
     void Class2_should_not_be_processed_because_it_has_been_disabled_via_annotation_property() {
         // when:
-        CustomTypeAnnotation annotation = Class2.class.getDeclaredAnnotation(CustomTypeAnnotation.class);
+        CustomTypeAnnotation annotation = Aggregate2.class.getDeclaredAnnotation(CustomTypeAnnotation.class);
         // then:
         assertThat(annotation).isNotNull();
         // and:
@@ -44,7 +44,7 @@ class CustomTypeAnnotationTest {
     @Test
     void Class3_should_be_processed() {
         // when:
-        CustomTypeAnnotation annotation = Class3.class.getDeclaredAnnotation(CustomTypeAnnotation.class);
+        CustomTypeAnnotation annotation = Aggregate3.class.getDeclaredAnnotation(CustomTypeAnnotation.class);
         // then:
         assertThat(annotation).isNotNull();
         // and:
@@ -54,7 +54,7 @@ class CustomTypeAnnotationTest {
     @Test
     void instance_of_Class1_should_not_be_processed_because_it_has_not_be_annotated() {
         // given:
-        Class1 instance = new Class1();
+        Aggregate1 instance = new Aggregate1();
         // when:
         CustomTypeAnnotation annotation = instance.getClass().getDeclaredAnnotation(CustomTypeAnnotation.class);
         // then:
@@ -66,7 +66,7 @@ class CustomTypeAnnotationTest {
             throws IllegalAccessException, InstantiationException {
 
         // given:
-        Class2 instance = Class2.class.newInstance();
+        Aggregate2 instance = Aggregate2.class.newInstance();
         // when:
         CustomTypeAnnotation annotation = instance.getClass().getDeclaredAnnotation(CustomTypeAnnotation.class);
         // then:
@@ -80,7 +80,7 @@ class CustomTypeAnnotationTest {
             IllegalAccessException, InvocationTargetException, InstantiationException /* <- newInstance */ {
 
         // given:
-        Class3 instance = Class3.class.getDeclaredConstructor().newInstance(new Object[0]);
+        Aggregate3 instance = Aggregate3.class.getDeclaredConstructor().newInstance(new Object[0]);
         // when:
         CustomTypeAnnotation annotation = instance.getClass().getDeclaredAnnotation(CustomTypeAnnotation.class);
         // then:
