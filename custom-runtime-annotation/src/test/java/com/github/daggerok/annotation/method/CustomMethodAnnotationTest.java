@@ -63,7 +63,7 @@ class Processor<A extends Annotation> {
         Method method = holder.getMethod();
         System.out.println(format("before invocation %s()", method.getName()));
         return method.getParameterCount() > 0
-                ? method.invoke(instance, "Hola and ololo-trololo!")
+                ? method.invoke(instance, Class.forName(method.getParameterTypes()[0].getName()).cast("Hola and ololo-trololo!"))
                 : method.invoke(instance);
     }
 }
