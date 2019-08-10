@@ -38,6 +38,7 @@
   <modules>
     <module>annotate-me-with</module>
     <module>command-handler</module>
+    <module>custom-runtime-annotation</module>
   </modules>
 
   <dependencies>
