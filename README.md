@@ -8,3 +8,4 @@ links:
 
 * [little reflections library tutorial](https://www.baeldung.com/reflections-library)
 * [guava eventbus wiki explained](https://github.com/google/guava/wiki/EventBusExplained)
+* [guava EventBus tutorial](https://www.baeldung.com/guava-eventbus)
