@@ -3,3 +3,8 @@
 ```bash
 ./mvnw clean ; ./mvnw test -U ; ./mvnw versions:display-property-updates
 ```
+
+links:
+
+* [little reflections library tutorial](https://www.baeldung.com/reflections-library)
+* [guava eventbus wiki explained](https://github.com/google/guava/wiki/EventBusExplained)
