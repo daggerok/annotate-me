@@ -15,11 +15,11 @@ jobs:
     jdk: openjdk8
     name: test jdk8
     script:
-      - ./mvnw -U
-      - java -jar guava-eventbus/target/*-all.jar
-      - java -jar publish-subscribe/target/*-all.jar
-      - java -jar reflections-class-path-scanning-annotation-type/target/*-all.jar
-      - java -jar spring-class-path-scanning-annotation-type/target/*-all.jar
+    - ./mvnw -U
+    - java -jar guava-eventbus/target/*-all.jar
+    - java -jar publish-subscribe/target/*-all.jar
+    - java -jar reflections-class-path-scanning-annotation-type/target/*-all.jar
+    - java -jar spring-class-path-scanning-annotation-type/target/*-all.jar
   - stage: test
     jdk: openjdk8
     name: check updates jdk8
@@ -27,7 +27,12 @@ jobs:
   - stage: test
     jdk: openjdk11
     name: test jdk11
-    script: ./mvnw -U
+    script:
+    - ./mvnw -U
+    - java -jar guava-eventbus/target/*-all.jar
+    - java -jar publish-subscribe/target/*-all.jar
+    - java -jar reflections-class-path-scanning-annotation-type/target/*-all.jar
+    - java -jar spring-class-path-scanning-annotation-type/target/*-all.jar
   - stage: test
     jdk: openjdk11
     name: check updates jdk11
