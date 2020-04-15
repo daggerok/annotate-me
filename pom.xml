@@ -80,6 +80,7 @@
     <module>publish-subscribe</module>
     <module>reflections-class-path-scanning-annotation-type</module>
     <module>spring-class-path-scanning-annotation-type</module>
+    <module>write-annotated-framework</module>
   </modules>
 
   <dependencies>
